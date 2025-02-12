@@ -38,7 +38,8 @@ The executable will be available in `target/release/todo_rust_cli`
 
 1. Add a new task:
 ```bash
-cargo run -- add "Your task description"
+cargo run -- add "Your task description" (without due date)
+cargo run -- add "Your task description" --due-date "YYYY-MM-DD" (with due date)
 ```
 
 2. List all tasks:
@@ -63,8 +64,8 @@ cargo run -- remove <task-id>
 $ cargo run -- add "Buy groceries"
 Task #0 added: Buy groceries
 
-# Add another task
-$ cargo run -- add "Call mom"
+# Add another task with due date
+$ cargo run -- add "Learn English" --due-date "2025-02-13"
 Task #1 added: Call mom
 
 # List all tasks
@@ -121,7 +122,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Future Improvements
 
-- [ ] Add due dates for tasks
+- [✓] Add due dates for tasks
 - [ ] Add priority levels
 - [ ] Add categories/tags
 - [ ] Add search functionality

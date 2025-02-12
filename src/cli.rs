@@ -9,7 +9,11 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Command {
     // Add a new task
-    Add { description: String },
+    Add {
+        description: String,
+        #[arg(short, long)]
+        due_date: Option<String>,
+    },
     // Mark a task as completed
     Complete { id: usize },
     // Remove a task

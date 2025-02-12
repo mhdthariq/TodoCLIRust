@@ -2,7 +2,18 @@
   "tasks": [
     {
       "description": "Buy groceries",
-      "completed": true
+      "completed": true,
+      "due_date": null
+    },
+    {
+      "description": "Buy Phone",
+      "completed": true,
+      "due_date": null
+    },
+    {
+      "description": "Learn Rust",
+      "completed": true,
+      "due_date": "2025-02-20"
     }
   ]
 }
