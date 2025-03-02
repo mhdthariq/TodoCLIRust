@@ -123,7 +123,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Future Improvements
 
 - [x] Add due dates for tasks
-- [ ] Add priority levels
+- [x] Add priority levels
 - [ ] Add categories/tags
 - [ ] Add search functionality
 - [ ] Add task editing
