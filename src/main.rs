@@ -7,13 +7,23 @@ use clap::Parser;
 use error::{Result, TodoError};
 use storage::{load_tasks, save_tasks};
 use chrono::NaiveDate;
+use task::Priority;
+
+fn parse_priority(priority: &str) -> Result<Priority> {
+    match priority.to_lowercase().as_str() {
+        "low" => Ok(Priority::Low),
+        "medium" => Ok(Priority::Medium),
+        "high" => Ok(Priority::High),
+        _ => Err(TodoError::InvalidPriority),
+    }
+}
 
 fn main() -> Result<()> {
     let args = cli::Cli::parse();
     let mut tasks = load_tasks()?;
 
     match args.command {
-        cli::Command::Add { description, due_date } => {
+        cli::Command::Add { description, due_date, priority } => {
             // Parse the due date if provided
             let parsed_due_date = due_date
                 .as_deref()
@@ -21,8 +31,10 @@ fn main() -> Result<()> {
                 .transpose()
                 .map_err(|_| TodoError::InvalidTaskId)?;  // Using InvalidTaskId for simplicity
 
-            let id = tasks.add_task(description.clone(), parsed_due_date);
-            println!("Task #{} added: {}{}", id, description,
+            let parsed_priority = parse_priority(&priority)?;
+
+            let id = tasks.add_task(description.clone(), parsed_due_date, parsed_priority);
+            println!("Task #{} added: {} (Priority: {}){}", id, description, priority,
                 if let Some(date) = parsed_due_date {
                     format!(" (Due: {})", date)
                 } else {

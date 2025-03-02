@@ -10,6 +10,9 @@ pub enum TodoError {
 
     #[error("Invalid task ID")]
     InvalidTaskId,
+
+    #[error("Invalid priority level. Use 'low', 'medium', or 'high'")]
+    InvalidPriority,
 }
 
 pub type Result<T> = std::result::Result<T, TodoError>;

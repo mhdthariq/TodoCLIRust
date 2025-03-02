@@ -13,6 +13,8 @@ pub enum Command {
         description: String,
         #[arg(short, long)]
         due_date: Option<String>,
+        #[arg(short, long, default_value = "medium")]
+        priority: String,
     },
     // Mark a task as completed
     Complete { id: usize },

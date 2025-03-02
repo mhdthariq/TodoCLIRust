@@ -1,19 +1,22 @@
 {
   "tasks": [
     {
-      "description": "Buy groceries",
-      "completed": true,
-      "due_date": null
+      "description": "Important meeting",
+      "completed": false,
+      "due_date": null,
+      "priority": "High"
     },
     {
-      "description": "Buy Phone",
-      "completed": true,
-      "due_date": null
+      "description": "Regular task",
+      "completed": false,
+      "due_date": null,
+      "priority": "Medium"
     },
     {
-      "description": "Learn Rust",
+      "description": "Low priority task",
       "completed": true,
-      "due_date": "2025-02-20"
+      "due_date": "2025-04-01",
+      "priority": "Low"
     }
   ]
 }
