@@ -17,6 +17,30 @@
       "completed": true,
       "due_date": "2025-04-01",
       "priority": "Low"
+    },
+    {
+      "description": "Test",
+      "completed": false,
+      "due_date": "2025-04-01",
+      "priority": "Medium"
+    },
+    {
+      "description": "Swimming",
+      "completed": false,
+      "due_date": null,
+      "priority": "Medium"
+    },
+    {
+      "description": "Buy groceries",
+      "completed": false,
+      "due_date": null,
+      "priority": "Medium"
+    },
+    {
+      "description": "Learn English",
+      "completed": false,
+      "due_date": "2025-02-13",
+      "priority": "Medium"
     }
   ]
 }

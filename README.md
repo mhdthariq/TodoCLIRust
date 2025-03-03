@@ -62,16 +62,21 @@ cargo run -- remove <task-id>
 ```bash
 # Add a new task
 $ cargo run -- add "Buy groceries"
-Task #0 added: Buy groceries
+Task #0 added: Buy groceries (Priority: medium)
 
 # Add another task with due date
-$ cargo run -- add "Learn English" --due-date "2025-02-13"
-Task #1 added: Call mom
+$ cargo run -- add "Learn English" -d 2025-02-13
+Task #1 added: Learn English (Priority: medium) (Due: 2025-02-13)
+
+# Add another task with priority
+$ cargo run -- add "Call mom" -p high
+Task #2 added: Call mom (Priority: high)
 
 # List all tasks
 $ cargo run -- list
-#0: [ ] Buy groceries
-#1: [ ] Call mom
+#0: [ ] Buy groceries (Priority: medium, No due date)
+#1: [ ] Learn English (Priority: medium, No due date) (Due: 2025-02-13)
+#2: [ ] Call mom (Priority: high, No due date)
 
 # Complete a task
 $ cargo run -- complete 0
