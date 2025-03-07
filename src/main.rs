@@ -23,7 +23,7 @@ fn main() -> Result<()> {
     let mut tasks = load_tasks()?;
 
     match args.command {
-        cli::Command::Add { description, due_date, priority } => {
+        cli::Command::Add { description, due_date, priority, tags } => {
             // Parse the due date if provided
             let parsed_due_date = due_date
                 .as_deref()
@@ -32,15 +32,29 @@ fn main() -> Result<()> {
                 .map_err(|_| TodoError::InvalidTaskId)?;  // Using InvalidTaskId for simplicity
 
             let parsed_priority = parse_priority(&priority)?;
+            let tags = tags.unwrap_or_default();
 
-            let id = tasks.add_task(description.clone(), parsed_due_date, parsed_priority);
-            println!("Task #{} added: {} (Priority: {}){}", id, description, priority,
+            let id = tasks.add_task(description.clone(), parsed_due_date, parsed_priority, tags.clone());
+            println!("Task #{} added: {} (Priority: {}){} Tags: [{}]", id, description, priority,
                 if let Some(date) = parsed_due_date {
                     format!(" (Due: {})", date)
                 } else {
                     "".to_string()
-                }
+                },
+                tags.join(", ")
             );
+        }
+        cli::Command::AddTags { id, tags } => {
+            let tags_clone = tags.clone();
+            tasks.add_tags(id, tags).map_err(|_| TodoError::InvalidTaskId)?;
+            println!("Added tags [{}] to task #{}", tags_clone.join(", "), id);
+        }
+        cli::Command::RemoveTags { id, tags } => {
+            tasks.remove_tags(id, tags.clone()).map_err(|_| TodoError::InvalidTaskId)?;
+            println!("Removed tags [{}] from task #{}", tags.join(", "), id);
+        }
+        cli::Command::ListByTag { tag } => {
+            tasks.list_tasks_by_tag(&tag);
         }
         cli::Command::Complete { id } => {
             tasks.complete_task(id).map_err(|_| TodoError::InvalidTaskId)?;

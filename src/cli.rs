@@ -15,6 +15,8 @@ pub enum Command {
         due_date: Option<String>,
         #[arg(short, long, default_value = "medium")]
         priority: String,
+        #[arg(short, long, value_delimiter = ',')]
+        tags: Option<Vec<String>>,
     },
     // Mark a task as completed
     Complete { id: usize },
@@ -22,4 +24,17 @@ pub enum Command {
     Remove { id: usize },
     // List all tasks
     List,
+    AddTags {
+        id: usize,
+        #[arg(value_delimiter = ',')]
+        tags: Vec<String>,
+    },
+    RemoveTags {
+        id: usize,
+        #[arg(value_delimiter = ',')]
+        tags: Vec<String>,
+    },
+    ListByTag {
+        tag: String,
+    },
 }

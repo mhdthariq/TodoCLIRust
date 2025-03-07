@@ -1,46 +1,23 @@
 {
   "tasks": [
     {
-      "description": "Important meeting",
-      "completed": false,
-      "due_date": null,
-      "priority": "High"
-    },
-    {
-      "description": "Regular task",
-      "completed": false,
-      "due_date": null,
-      "priority": "Medium"
-    },
-    {
-      "description": "Low priority task",
-      "completed": true,
-      "due_date": "2025-04-01",
-      "priority": "Low"
-    },
-    {
-      "description": "Test",
-      "completed": false,
-      "due_date": "2025-04-01",
-      "priority": "Medium"
-    },
-    {
-      "description": "Swimming",
-      "completed": false,
-      "due_date": null,
-      "priority": "Medium"
-    },
-    {
       "description": "Buy groceries",
       "completed": false,
       "due_date": null,
-      "priority": "Medium"
+      "priority": "Medium",
+      "tags": [
+        "food",
+        "shopping"
+      ]
     },
     {
       "description": "Learn English",
-      "completed": false,
+      "completed": true,
       "due_date": "2025-02-13",
-      "priority": "Medium"
+      "priority": "High",
+      "tags": [
+        "learn"
+      ]
     }
   ]
 }
